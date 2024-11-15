@@ -1,6 +1,6 @@
 from random import randrange
 import customtkinter
-
+import random
 
 
 
@@ -11,45 +11,63 @@ input_buttons = [[2 ,3 ,4 ] ,
                 [5 , 6 ,7] ,
                 [8 , 9 , 10]]
 
-check_buttons = [False , False , False , False , False , False , False , False , False] 
+check_buttons = [1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9] 
 def tic_tac_toe():
                 returned_number = check_conditions(input_buttons)
                 if(returned_number == -1):
-                        while(True):
-                                random_number_row = randrange(3)
-                                random_number_column = randrange(3)
-                                random_created_number = input_buttons[random_number_row][random_number_column]
-                                if((random_created_number != 1) and (random_created_number != 0)):
-                                        if((random_created_number == input_buttons[0][0]) and (check_buttons[0] != True)):
+                        while(check_buttons):
+                                random_number = random.randint( 1 , 9)
+                                if(random_number in check_buttons):
+                                        if((random_number == 1)):
+                                                check_buttons.remove(1)
                                                 button1.configure(text="O") 
-                                                check_buttons[0] = True
-                                        elif((random_created_number == input_buttons[0][1]) and (check_buttons[1] != True)):
+                                                input_buttons[0][0] = 0
+                                                break
+                                        elif((random_number == 2)):
+                                                check_buttons.remove(2)
                                                 button2.configure(text="O") 
-                                                check_buttons[1] = True
-                                        elif((random_created_number == input_buttons[0][2]) and (check_buttons[2] != True)):
+                                                input_buttons[0][1] = 0
+                                                break
+                                        elif((random_number == 3)):
+                                                check_buttons.remove(3)
                                                 button3.configure(text="O") 
-                                                check_buttons[2] = True
-                                        elif((random_created_number == input_buttons[1][0]) and (check_buttons[3] != True)):
+                                                input_buttons[0][2] = 0
+                                                break
+                                        elif((random_number == 4)):
+                                                check_buttons.remove(4)
                                                 button4.configure(text="O") 
-                                                check_buttons[3] = True
-                                        elif((random_created_number == input_buttons[1][1]) and (check_buttons[4] != True)):
+                                                input_buttons[1][0] = 0
+                                                break
+                                        elif((random_number == 5)):
+                                                check_buttons.remove(5)
                                                 button5.configure(text="O") 
-                                                check_buttons[4] = True
-                                        elif((random_created_number == input_buttons[1][2]) and (check_buttons[5] != True)):
+                                                input_buttons[1][1] = 0
+                                                break
+                                        elif((random_number == 6)):
+                                                check_buttons.remove(6)
                                                 button6.configure(text="O") 
-                                                check_buttons[5] = True
-                                        elif((random_created_number == input_buttons[2][0]) and (check_buttons[6] != True)):
-                                                button7.configure(text="O")
-                                                check_buttons[6] = True 
-                                        elif((random_created_number == input_buttons[2][1]) and (check_buttons[7] != True)):
+                                                input_buttons[1][2] = 0
+                                                break
+                                        elif((random_number == 7)):
+                                                check_buttons.remove(7)
+                                                button7.configure(text="O") 
+                                                input_buttons[2][0] = 0
+                                                break
+                                        elif((random_number == 8)):
+                                                check_buttons.remove(8)
                                                 button8.configure(text="O") 
-                                                check_buttons[7] = True
-                                        elif((random_created_number == input_buttons[2][2]) and (check_buttons[8] != True)):
+                                                input_buttons[2][1] = 0
+                                                break
+                                        elif((random_number == 9)):
+                                                check_buttons.remove(9)
                                                 button9.configure(text="O") 
-                                                check_buttons[8] = True
-                                        break   
+                                                input_buttons[2][2] = 0
+                                                break
+                                           
                 
                         returned_number = check_conditions(input_buttons)
+                        if(returned_number == 0):
+                                label.configure(text="You lose!")
                 else:
                         if(returned_number == 0):
                                 label.configure(text="You lose!")
@@ -130,116 +148,94 @@ def check_conditions(input_buttons):
                 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # button functions
 
 def button1_callback():
         button1.configure(text="*") 
         input_buttons[0][0] = 1
-        check_buttons[0] = True
+        check_buttons.remove(1)
         tic_tac_toe()
 def button2_callback():
         button2.configure(text="*")
         input_buttons[0][1] = 1
-        check_buttons[1] = True
+        check_buttons.remove(2)
         tic_tac_toe()
 def button3_callback():
         button3.configure(text="*")
         input_buttons[0][2] = 1
-        check_buttons[2] = True
+        check_buttons.remove(3)
         tic_tac_toe()
 def button4_callback():
         button4.configure(text="*")
         input_buttons[1][0] = 1
-        check_buttons[3] = True
+        check_buttons.remove(4)
         tic_tac_toe()
 def button5_callback():
         button5.configure(text="*")
         input_buttons[1][1] = 1
-        check_buttons[4] = True
+        check_buttons.remove(5)
         tic_tac_toe()
 def button6_callback():
         button6.configure(text="*")
         input_buttons[1][2] = 1
-        check_buttons[5] = True
+        check_buttons.remove(6)
         tic_tac_toe()
 def button7_callback():
         button7.configure(text="*")
         input_buttons[2][0] = 1
-        check_buttons[6] = True
+        check_buttons.remove(7)
         tic_tac_toe()
 def button8_callback():
         button8.configure(text="*")
         input_buttons[2][1] = 1
-        check_buttons[7] = True
+        check_buttons.remove(8)
         tic_tac_toe()
 def button9_callback():
         button9.configure(text="*")
         input_buttons[2][2] = 1
-        check_buttons[8] = True
+        check_buttons.remove(9)
         tic_tac_toe()
         
         
 def button_reset_callback():
+        global check_buttons
+        global input_buttons        
+        
+        check_buttons.clear()
+        check_buttons.append(1)
+        check_buttons.append(2)
+        check_buttons.append(3)
+        check_buttons.append(4)
+        check_buttons.append(5)
+        check_buttons.append(6)
+        check_buttons.append(7)
+        check_buttons.append(8)
+        check_buttons.append(9) 
+       
+        
+        input_buttons.clear()
+        input_buttons=[[] , [] , []]
+        input_buttons[0].append(2)
+        input_buttons[0].append(3)
+        input_buttons[0].append(4)
+        
+        input_buttons[1].append(5)
+        input_buttons[1].append(6)
+        input_buttons[1].append(7)
+        
+        input_buttons[2].append(8)
+        input_buttons[2].append(9)
+        input_buttons[2].append(10)
+        
         button1.configure(text=" ")
-        input_buttons[0][0] = 2
-        check_buttons[0] = False
-        
         button2.configure(text=" ")
-        input_buttons[0][1] = 3
-        check_buttons[1] = False
-        
         button3.configure(text=" ")
-        input_buttons[0][2] = 4
-        check_buttons[2] = False
-        
         button4.configure(text=" ")
-        input_buttons[1][0] = 5
-        check_buttons[3] = False
-        
         button5.configure(text=" ")
-        input_buttons[1][1] = 6
-        check_buttons[4] = False
-        
         button6.configure(text=" ")
-        input_buttons[1][2] = 7
-        check_buttons[5] = False
-        
         button7.configure(text=" ")
-        input_buttons[2][0] = 8
-        check_buttons[6] = False
-        
         button8.configure(text=" ")
-        input_buttons[2][1] = 9
-        check_buttons[7] = False
-        
-        button9.configure(text=" ")
-        input_buttons[2][2] = 10
-        check_buttons[8] = False
-                                        
+        button9.configure(text=" ")     
         label.configure(text=" ")
 
         
