@@ -2,6 +2,11 @@ from random import randrange
 import customtkinter
 
 
+
+
+
+
+
 input_buttons = [[2 ,3 ,4 ] ,
                 [5 , 6 ,7] ,
                 [8 , 9 , 10]]
@@ -196,6 +201,48 @@ def button9_callback():
         input_buttons[2][2] = 1
         check_buttons[8] = True
         tic_tac_toe()
+        
+        
+def button_reset_callback():
+        button1.configure(text=" ")
+        input_buttons[0][0] = 2
+        check_buttons[0] = False
+        
+        button2.configure(text=" ")
+        input_buttons[0][1] = 3
+        check_buttons[1] = False
+        
+        button3.configure(text=" ")
+        input_buttons[0][2] = 4
+        check_buttons[2] = False
+        
+        button4.configure(text=" ")
+        input_buttons[1][0] = 5
+        check_buttons[3] = False
+        
+        button5.configure(text=" ")
+        input_buttons[1][1] = 6
+        check_buttons[4] = False
+        
+        button6.configure(text=" ")
+        input_buttons[1][2] = 7
+        check_buttons[5] = False
+        
+        button7.configure(text=" ")
+        input_buttons[2][0] = 8
+        check_buttons[6] = False
+        
+        button8.configure(text=" ")
+        input_buttons[2][1] = 9
+        check_buttons[7] = False
+        
+        button9.configure(text=" ")
+        input_buttons[2][2] = 10
+        check_buttons[8] = False
+                                        
+        label.configure(text=" ")
+
+        
     
 
 
@@ -230,8 +277,11 @@ button8.grid(row=3, column=2, padx=20, pady=20)
 button9 = customtkinter.CTkButton(app ,text=" ", command=button9_callback)
 button9.grid(row=3, column=3, padx=20, pady=20)
 
+button_reset = customtkinter.CTkButton(app ,text="Reset", command=button_reset_callback)
+button_reset.grid(row=4, column=1, padx=20, pady=20)
+
 label = customtkinter.CTkLabel(app, text=" ", fg_color="transparent")
-label.grid(row=4, column=2, padx=20, pady=20)
+label.grid(row=5, column=2, padx=20, pady=20)
 
 
 app.mainloop()
