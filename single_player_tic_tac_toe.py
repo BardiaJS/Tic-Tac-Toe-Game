@@ -14,7 +14,7 @@ input_buttons = [[2 ,3 ,4 ] ,
 check_buttons = [1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9] 
 def tic_tac_toe():
                 returned_number = check_conditions(input_buttons)
-                if(returned_number == -1):
+                if((returned_number == -1)):
                         while(check_buttons):
                                 random_number = random.randint( 1 , 9)
                                 if(random_number in check_buttons):
@@ -64,10 +64,15 @@ def tic_tac_toe():
                                                 input_buttons[2][2] = 0
                                                 break
                                            
-                
                         returned_number = check_conditions(input_buttons)
                         if(returned_number == 0):
                                 label.configure(text="You lose!")
+                        elif(returned_number == 1):
+                                label.configure(text="You Win!")
+                        else:
+                                if(not check_buttons):
+                                        label.configure(text="Draw!") 
+        
                 else:
                         if(returned_number == 0):
                                 label.configure(text="You lose!")
@@ -95,7 +100,7 @@ def check_conditions(input_buttons):
             
         elif(input_buttons[1][0] == input_buttons[1][1] == input_buttons[1][2]):
                 print ("The games is over!")
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[1][0] == 0 ):
                         return 0
                 else:
                         return 1
@@ -103,7 +108,7 @@ def check_conditions(input_buttons):
            
         elif(input_buttons[2][0] == input_buttons[2][1] == input_buttons[2][2]):
                 print ("The games is over!")
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[2][0] == 0 ):
                         return 0
                 else:
                         return 1
@@ -117,14 +122,14 @@ def check_conditions(input_buttons):
                 
         elif(input_buttons[0][1] == input_buttons[1][1] == input_buttons[2][1]):
                 print ("The games is over!")
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[0][1] == 0 ):
                         return 0
                 else:
                         return 1
                 
         elif(input_buttons[0][2] == input_buttons[1][2] == input_buttons[2][2]):
                 print ("The games is over!")
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[0][2] == 0 ):
                         return 0
                 else:
                         return 1
@@ -138,7 +143,7 @@ def check_conditions(input_buttons):
                 
         elif(input_buttons[0][2] == input_buttons[1][1] == input_buttons[2][0]):
                 print ("The games is over!")
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[0][2] == 0 ):
                         return 0
                 else:
                         return 1
