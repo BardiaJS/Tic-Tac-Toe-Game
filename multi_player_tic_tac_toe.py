@@ -2,9 +2,9 @@ from random import randrange
 import customtkinter
 
 
-if __name__ == "__main__":
 
-        input_buttons = [[2 ,3 ,4 ] ,
+
+input_buttons = [[2 ,3 ,4 ] ,
                 [5 , 6 ,7] ,
                 [8 , 9 , 10]]
 which_user = 1
@@ -12,7 +12,13 @@ check_buttons = [False , False , False , False , False , False , False , False ,
 def tic_tac_toe():
                 returned_number = check_conditions(input_buttons)
                 if(returned_number == -1):
-                        returned_number = check_conditions(input_buttons)
+                        is_checked_checkbuttons = 0
+                        for i in check_buttons:
+                                if( i == True):
+                                        is_checked_checkbuttons += 1
+                        if(is_checked_checkbuttons == 9):
+                                label.configure(text="Draw!")
+                                        
                 else:
                         if(returned_number == 0):
                                 label.configure(text="User B wins!")
@@ -30,7 +36,6 @@ def tic_tac_toe():
 def check_conditions(input_buttons):
         
         if(input_buttons[0][0] == input_buttons[0][1] == input_buttons[0][2]):
-
             if(input_buttons[0][0] == 0 ):
                     return 0
             else:
@@ -39,7 +44,7 @@ def check_conditions(input_buttons):
             
             
         elif(input_buttons[1][0] == input_buttons[1][1] == input_buttons[1][2]):
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[1][0] == 0 ):
                         return 0
                 else:
                         return 1
@@ -47,7 +52,7 @@ def check_conditions(input_buttons):
            
         elif(input_buttons[2][0] == input_buttons[2][1] == input_buttons[2][2]):
     
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[2][0] == 0 ):
                         return 0
                 else:
                         return 1
@@ -61,14 +66,14 @@ def check_conditions(input_buttons):
                 
         elif(input_buttons[0][1] == input_buttons[1][1] == input_buttons[2][1]):
 
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[0][1] == 0 ):
                         return 0
                 else:
                         return 1
                 
         elif(input_buttons[0][2] == input_buttons[1][2] == input_buttons[2][2]):
   
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[0][2] == 0 ):
                         return 0
                 else:
                         return 1
@@ -82,7 +87,7 @@ def check_conditions(input_buttons):
                 
         elif(input_buttons[0][2] == input_buttons[1][1] == input_buttons[2][0]):
 
-                if(input_buttons[0][0] == 0 ):
+                if(input_buttons[0][2] == 0 ):
                         return 0
                 else:
                         return 1
@@ -128,7 +133,6 @@ def button1_callback():
                         check_buttons[0] = True
                 else:
                         label.configure(text="You can't choose that button!")
-
                 which_user = 0
         else:
                 if(check_buttons[0] == False):
@@ -309,8 +313,56 @@ def button9_callback():
 
                 which_user = 1
         tic_tac_toe()
-    
+        
+        
 
+def button_reset_callback():
+        global input_buttons
+        global which_user
+        global check_buttons   
+        
+        button1.configure(text=" ")
+        button2.configure(text=" ")
+        button3.configure(text=" ")
+        button4.configure(text=" ")
+        button5.configure(text=" ")
+        button6.configure(text=" ")
+        button7.configure(text=" ")
+        button8.configure(text=" ")
+        button9.configure(text=" ")
+        label.configure(text=" ")
+
+        
+        
+        
+        
+        
+        
+        
+        
+          
+        
+        input_buttons.clear()
+        input_buttons =[[] , 
+                        [] ,
+                        []]
+        input_buttons[0].append(2)
+        input_buttons[0].append(3)
+        input_buttons[0].append(4)
+        input_buttons[1].append(5)
+        input_buttons[1].append(6)
+        input_buttons[1].append(7)
+        input_buttons[2].append(8)
+        input_buttons[2].append(9)
+        input_buttons[2].append(10)
+        
+        which_user = 1
+        
+        check_buttons.clear()
+        
+        for i in range(0 , 9):
+                check_buttons.append(False)
+                i +=1
 
 # graphical interface declaring
 app = customtkinter.CTk()
@@ -342,6 +394,9 @@ button8.grid(row=3, column=2, padx=20, pady=20)
 
 button9 = customtkinter.CTkButton(app ,text=" ", command=button9_callback)
 button9.grid(row=3, column=3, padx=20, pady=20)
+
+button_reset = customtkinter.CTkButton(app ,text="Reset", command=button_reset_callback)
+button_reset.grid(row=4, column=1, padx=20, pady=20)
 
 label = customtkinter.CTkLabel(app, text=" ", fg_color="transparent")
 label.grid(row=4, column=2, padx=20, pady=20)
