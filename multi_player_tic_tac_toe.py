@@ -1,6 +1,6 @@
 from random import randrange
 import customtkinter
-
+import os
 
 
 
@@ -363,6 +363,13 @@ def button_reset_callback():
         for i in range(0 , 9):
                 check_buttons.append(False)
                 i +=1
+                
+                
+                
+                
+def button_back_callback():
+        app.destroy()
+        os.system('python first_page_tic_tac_toe.py')
 
 # graphical interface declaring
 app = customtkinter.CTk()
@@ -397,6 +404,9 @@ button9.grid(row=3, column=3, padx=20, pady=20)
 
 button_reset = customtkinter.CTkButton(app ,text="Reset", command=button_reset_callback)
 button_reset.grid(row=4, column=1, padx=20, pady=20)
+
+button_back = customtkinter.CTkButton(app ,text="Back", command=button_back_callback)
+button_back.grid(row=4, column=3, padx=20, pady=20)
 
 label = customtkinter.CTkLabel(app, text=" ", fg_color="transparent")
 label.grid(row=4, column=2, padx=20, pady=20)

@@ -1,7 +1,7 @@
 from random import randrange
 import customtkinter
 import random
-
+import os
 
 
 
@@ -244,7 +244,9 @@ def button_reset_callback():
         label.configure(text=" ")
 
         
-    
+def button_back_callback():
+        app.destroy()
+        os.system('python first_page_tic_tac_toe.py')
 
 
 # graphical interface declaring
@@ -281,8 +283,11 @@ button9.grid(row=3, column=3, padx=20, pady=20)
 button_reset = customtkinter.CTkButton(app ,text="Reset", command=button_reset_callback)
 button_reset.grid(row=4, column=1, padx=20, pady=20)
 
+button_back = customtkinter.CTkButton(app ,text="Back", command=button_back_callback)
+button_back.grid(row=4, column=3, padx=20, pady=20)
+
 label = customtkinter.CTkLabel(app, text=" ", fg_color="transparent")
-label.grid(row=5, column=2, padx=20, pady=20)
+label.grid(row=4, column=2, padx=20, pady=20)
 
 
 app.mainloop()
